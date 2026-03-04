@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidyāMitra - AI Career Agent</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="particles">
+            <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; top: 80%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 30%; top: 40%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 40%; top: 60%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 50%; top: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 60%; top: 70%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; top: 50%; animation-delay: 6s;"></div>
+            <div class="particle" style="left: 80%; top: 25%; animation-delay: 7s;"></div>
+            <div class="particle" style="left: 90%; top: 75%; animation-delay: 8s;"></div>
+        </div>
+    </div>
+
+    <!-- Login Container -->
+    <div id="loginContainer" class="container">
+        <div class="glass-card">
+            <header class="header">
+                <h1 class="logo">🎯 VidyāMitra</h1>
+                <p class="tagline">AI-Powered Resume Evaluator, Trainer & Career Planner</p>
+            </header>
+            
+            <div class="auth-section">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showLogin()">Login</button>
+                    <button class="tab-btn" onclick="showRegister()">Register</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Email" required>
+                        <span class="input-icon">📧</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" required>
+                        <span class="input-icon">🔒</span>
+                    </div>
+                    <button type="submit" class="btn-primary">Login to Dashboard</button>
+                </form>
+                
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form" style="display: none;">
+                    <div class="input-group">
+                        <input type="text" placeholder="Full Name" required>
+                        <span class="input-icon">👤</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="Email" required>
+                        <span class="input-icon">📧</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Password" required>
+                        <span class="input-icon">🔒</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" placeholder="Confirm Password" required>
+                        <span class="input-icon">🔒</span>
+                    </div>
+                    <button type="submit" class="btn-primary">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Container -->
+    <div id="dashboardContainer" class="container" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">👤</div>
+                <div class="user-info">
+                    <h3 id="userName">John Doe</h3>
+                    <p>john.doe@example.com</p>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" onclick="showSection('dashboard')">
+                    <span class="nav-icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('profile')">
+                    <span class="nav-icon">👤</span>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('upload')">
+                    <span class="nav-icon">📁</span>
+                    <span>Upload Resume</span>
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('export')">
+                    <span class="nav-icon">📤</span>
+                    <span>Export & Share</span>
+                </a>
+                <a href="#" class="nav-item" onclick="logout()">
+                    <span class="nav-icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <h1 class="logo">🎯 VidyāMitra</h1>
+                <p class="tagline">AI-Powered Resume Evaluator, Trainer & Career Planner</p>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboardSection" class="content-section">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="85">0</div>
+                        <div class="metric-label">Overall Score</div>
+                        <div class="metric-icon">📊</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="12">0</div>
+                        <div class="metric-label">Skills Identified</div>
+                        <div class="metric-icon">💼</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="3">0</div>
+                        <div class="metric-label">Work Experience</div>
+                        <div class="metric-icon">🏢</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="2">0</div>
+                        <div class="metric-label">Education</div>
+                        <div class="metric-icon">🎓</div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="glass-card">
+                        <h2>📈 Resume Overview</h2>
+                        <div class="progress-list">
+                            <div class="progress-item">
+                                <span>Content Quality</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                                <span class="progress-value">85%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Skills Match</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%"></div>
+                                </div>
+                                <span class="progress-value">92%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span>Format & Structure</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                                <span class="progress-value">78%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h2>💼 Top Skills</h2>
+                        <div class="skills-container">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Data Analysis</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Communication</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h2>🎯 Career Recommendations</h2>
+                    <div class="recommendations-grid">
+                        <div class="recommendation-card">
+                            <h3>Senior Software Engineer</h3>
+                            <div class="match-score">
+                                <span class="score-label">Match Score:</span>
+                                <span class="score-value">94%</span>
+                            </div>
+                            <div class="details">
+                                <p><strong>Salary Range:</strong> $120k - $180k</p>
+                                <p><strong>Growth Potential:</strong> High</p>
+                                <div class="skills-section">
+                                    <p><strong>Required Skills:</strong></p>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag small">JavaScript</span>
+                                        <span class="skill-tag small">React</span>
+                                        <span class="skill-tag small">Node.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recommendation-card">
+                            <h3>Data Scientist</h3>
+                            <div class="match-score">
+                                <span class="score-label">Match Score:</span>
+                                <span class="score-value">87%</span>
+                            </div>
+                            <div class="details">
+                                <p><strong>Salary Range:</strong> $100k - $150k</p>
+                                <p><strong>Growth Potential:</strong> Very High</p>
+                                <div class="skills-section">
+                                    <p><strong>Required Skills:</strong></p>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag small">Python</span>
+                                        <span class="skill-tag small">Machine Learning</span>
+                                        <span class="skill-tag small">Data Analysis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section id="uploadSection" class="content-section" style="display: none;">
+                <div class="glass-card">
+                    <h2>📁 Upload Resume</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <div class="upload-icon">📄</div>
+                            <h3>Drop your resume here</h3>
+                            <p>or click to browse</p>
+                            <p class="upload-hint">Supported formats: PDF, DOCX, TXT, JPG, PNG, WebP (Max 10MB)</p>
+                        </div>
+                        <input type="file" id="fileInput" accept=".pdf,.docx,.txt,.jpg,.jpeg,.png,.webp" style="display: none;">
+                    </div>
+                    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">Choose File</button>
+                </div>
+            </section>
+
+            <div class="content-grid">
+            <!-- Profile Section -->
+            <section id="profileSection" class="content-section" style="display: none;">
+                <div class="glass-card">
+                    <h2>👤 Profile Settings</h2>
+                    <form class="profile-form">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <input type="text" placeholder="Full Name" value="John Doe">
+                                <span class="input-icon">👤</span>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" placeholder="Email" value="john.doe@example.com">
+                                <span class="input-icon">📧</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <textarea placeholder="Skills" rows="3">JavaScript, Python, React, Node.js, Machine Learning, Data Analysis, Leadership, Communication</textarea>
+                            <span class="input-icon">💼</span>
+                        </div>
+                        <div class="input-group">
+                            <textarea placeholder="Experience" rows="4">5+ years of experience in full-stack development with expertise in modern web technologies and data science.</textarea>
+                            <span class="input-icon">🏢</span>
+                        </div>
+                        <div class="input-group">
+                            <textarea placeholder="Career Goals" rows="3">To become a senior technical lead and contribute to innovative AI-driven solutions.</textarea>
+                            <span class="input-icon">🎯</span>
+                        </div>
+                        <button type="submit" class="btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Export Section -->
+            <section id="exportSection" class="content-section" style="display: none;">
+                <div class="glass-card">
+                    <h2>📤 Export & Share</h2>
+                    <div class="export-options">
+                        <button class="export-btn">
+                            <span class="export-icon">📄</span>
+                            <span>Export as PDF</span>
+                        </button>
+                        <button class="export-btn">
+                            <span class="export-icon">🔗</span>
+                            <span>Share Link</span>
+                        </button>
+                        <button class="export-btn">
+                            <span class="export-icon">📧</span>
+                            <span>Email Report</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

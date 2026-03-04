@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidyāMitra - AI Career Agent</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Inline script to hide navbar immediately -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, hiding navbar...');
+            var navbar = document.getElementById('navbar');
+            if (navbar) {
+                navbar.style.display = 'none';
+                navbar.style.visibility = 'hidden';
+                navbar.style.opacity = '0';
+                navbar.style.height = '0';
+                navbar.style.overflow = 'hidden';
+                navbar.style.position = 'absolute';
+                navbar.style.top = '-9999px';
+                navbar.style.left = '-9999px';
+                console.log('Navbar hidden by inline script');
+            } else {
+                console.log('Navbar not found even after DOM loaded');
+            }
+        });
+        
+        // Also try immediately in case DOM is already ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', hideNavbar);
+        } else {
+            hideNavbar();
+        }
+        
+        function hideNavbar() {
+            console.log('Hiding navbar immediately...');
+            var navbar = document.getElementById('navbar');
+            if (navbar) {
+                navbar.style.display = 'none';
+                navbar.style.visibility = 'hidden';
+                navbar.style.opacity = '0';
+                navbar.style.height = '0';
+                navbar.style.overflow = 'hidden';
+                navbar.style.position = 'absolute';
+                navbar.style.top = '-9999px';
+                navbar.style.left = '-9999px';
+                console.log('Navbar hidden by inline script');
+            } else {
+                console.log('Navbar not found yet, will hide later...');
+            }
+        }
+    </script>
+    
+    <!-- Static Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-bullseye"></i>
+                <span>VidyāMitra</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="#profile" class="nav-link" data-section="profile">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+                <a href="#history" class="nav-link" data-section="history">
+                    <i class="fas fa-history"></i> History
+                </a>
+                <button class="nav-btn logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Login Section -->
+        <section class="section active" id="loginSection">
+            <div class="auth-container">
+                <div class="floating-tiles">
+                    <div class="tile tile-1" data-speed="0.5"></div>
+                    <div class="tile tile-2" data-speed="0.8"></div>
+                    <div class="tile tile-3" data-speed="0.6"></div>
+                    <div class="tile tile-4" data-speed="0.7"></div>
+                    <div class="tile tile-5" data-speed="0.9"></div>
+                </div>
+                
+                <div class="auth-card glass-card">
+                    <div class="auth-header">
+                        <h1 class="auth-title">
+                            <i class="fas fa-bullseye"></i> VidyāMitra
+                        </h1>
+                        <p class="auth-subtitle">🔐 Login to your AI Career Agent</p>
+                    </div>
+                    
+                    <div class="auth-tabs">
+                        <button class="tab-btn active" data-tab="login">Login</button>
+                        <button class="tab-btn" data-tab="register">Register</button>
+                    </div>
+                    
+                    <!-- Login Form -->
+                    <form class="auth-form active" id="loginForm">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-envelope"></i> Email
+                            </label>
+                            <input type="email" class="form-input" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-lock"></i> Password
+                            </label>
+                            <input type="password" class="form-input" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </form>
+                    
+                    <!-- Register Form -->
+                    <form class="auth-form" id="registerForm">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-user"></i> Full Name
+                            </label>
+                            <input type="text" class="form-input" id="registerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-envelope"></i> Email
+                            </label>
+                            <input type="email" class="form-input" id="registerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-lock"></i> Password
+                            </label>
+                            <input type="password" class="form-input" id="registerPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-lock"></i> Confirm Password
+                            </label>
+                            <input type="password" class="form-input" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section class="section" id="dashboardSection">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <h1 class="section-title">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </h1>
+                    <p class="section-subtitle">Welcome back, <span id="userName">User</span>!</p>
+                </div>
+
+                <!-- Upload Section -->
+                <div class="upload-section glass-card">
+                    <h2 class="card-title">
+                        <i class="fas fa-upload"></i> Upload Resume
+                    </h2>
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <p class="upload-text">Drag & drop your resume here</p>
+                            <p class="upload-subtext">or click to browse</p>
+                            <input type="file" id="fileInput" accept=".pdf,.docx,.txt" hidden>
+                            <button class="btn btn-secondary" id="browseBtn">
+                                <i class="fas fa-folder-open"></i> Browse Files
+                            </button>
+                        </div>
+                        <div class="upload-progress hidden" id="uploadProgress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <p class="progress-text">Analyzing resume...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section hidden" id="resultsSection">
+                    <div class="results-grid">
+                        <!-- Score Cards -->
+                        <div class="score-cards">
+                            <div class="metric-card glass-card" data-tilt>
+                                <div class="metric-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <h3 class="metric-title">Overall Score</h3>
+                                    <div class="metric-value" id="overallScore">0/100</div>
+                                    <div class="metric-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="scoreProgress"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="metric-card glass-card" data-tilt>
+                                <div class="metric-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <h3 class="metric-title">Skills</h3>
+                                    <div class="metric-value" id="skillsCount">0</div>
+                                    <p class="metric-subtitle">Identified</p>
+                                </div>
+                            </div>
+                            
+                            <div class="metric-card glass-card" data-tilt>
+                                <div class="metric-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <h3 class="metric-title">Experience</h3>
+                                    <div class="metric-value" id="experienceCount">0</div>
+                                    <p class="metric-subtitle">Positions</p>
+                                </div>
+                            </div>
+                            
+                            <div class="metric-card glass-card" data-tilt>
+                                <div class="metric-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <h3 class="metric-title">Education</h3>
+                                    <div class="metric-value" id="educationCount">0</div>
+                                    <p class="metric-subtitle">Degrees</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Analysis Tabs -->
+                        <div class="analysis-tabs glass-card">
+                            <div class="tab-navigation">
+                                <button class="tab-btn active" data-tab="overview">
+                                    <i class="fas fa-chart-pie"></i> Overview
+                                </button>
+                                <button class="tab-btn" data-tab="skills">
+                                    <i class="fas fa-tools"></i> Skills
+                                </button>
+                                <button class="tab-btn" data-tab="careers">
+                                    <i class="fas fa-rocket"></i> Careers
+                                </button>
+                                <button class="tab-btn" data-tab="gaps">
+                                    <i class="fas fa-exclamation-triangle"></i> Gaps
+                                </button>
+                                <button class="tab-btn" data-tab="suggestions">
+                                    <i class="fas fa-lightbulb"></i> Tips
+                                </button>
+                            </div>
+                            
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="overviewTab">
+                                    <div class="strengths-weaknesses">
+                                        <div class="strengths">
+                                            <h3><i class="fas fa-check-circle"></i> Strengths</h3>
+                                            <ul id="strengthsList"></ul>
+                                        </div>
+                                        <div class="weaknesses">
+                                            <h3><i class="fas fa-times-circle"></i> Areas to Improve</h3>
+                                            <ul id="weaknessesList"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-pane" id="skillsTab">
+                                    <div class="skills-container" id="skillsContainer"></div>
+                                </div>
+                                
+                                <div class="tab-pane" id="careersTab">
+                                    <div class="careers-container" id="careersContainer"></div>
+                                </div>
+                                
+                                <div class="tab-pane" id="gapsTab">
+                                    <div class="gaps-container" id="gapsContainer"></div>
+                                </div>
+                                
+                                <div class="tab-pane" id="suggestionsTab">
+                                    <div class="suggestions-container" id="suggestionsContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="section" id="profileSection">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <h1 class="section-title">
+                        <i class="fas fa-user-circle"></i> Profile
+                    </h1>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="profile-form glass-card">
+                        <h2 class="card-title">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </h2>
+                        <form id="profileForm">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <i class="fas fa-tools"></i> Skills
+                                </label>
+                                <textarea class="form-input" id="profileSkills" placeholder="Enter your skills separated by commas"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <i class="fas fa-briefcase"></i> Experience
+                                </label>
+                                <textarea class="form-input" id="profileExperience" placeholder="Describe your work experience"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <i class="fas fa-target"></i> Career Goals
+                                </label>
+                                <textarea class="form-input" id="profileGoals" placeholder="What are your career aspirations?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Profile
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-stats glass-card">
+                        <h2 class="card-title">
+                            <i class="fas fa-chart-bar"></i> Statistics
+                        </h2>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" id="analysisCount">0</div>
+                                <div class="stat-label">Analyses</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="latestScore">0</div>
+                                <div class="stat-label">Latest Score</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="profileSkillsCount">0</div>
+                                <div class="stat-label">Skills</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="section" id="historySection">
+            <div class="history-container">
+                <div class="history-header">
+                    <h1 class="section-title">
+                        <i class="fas fa-history"></i> Analysis History
+                    </h1>
+                </div>
+                
+                <div class="history-content" id="historyContent">
+                    <!-- History items will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
